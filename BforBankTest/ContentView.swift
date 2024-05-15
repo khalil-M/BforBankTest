@@ -1,9 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @Environment(\.colorScheme) var colorScheme
-    
-    
     
     var body: some View {
         NavigationView {
@@ -21,7 +20,9 @@ struct ContentView: View {
                         Button(action: {
                             
                         }) {
-                            makeScanButtonView()
+                            NavigationLink(destination: IbanScanner().navigationBarTitle("Scannez votre IBAN")) {
+                                makeScanButtonView()
+                            }
                         }
                         .buttonStyle(PlainButtonStyle())
                        Spacer()
@@ -48,12 +49,6 @@ struct ContentView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.green, lineWidth: 1)
             )
-    }
-}
-
-extension Color {
-    static func getBackgroundColor(colorScheme: ColorScheme) -> Color {
-        return colorScheme == .dark ? Color.black : Color.white
     }
 }
 
